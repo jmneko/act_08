@@ -1,17 +1,35 @@
-const getInmuebles = (req, res) => {
-  res.json("GET");
+const InmuebleModel = require("../models/inmueble.model");
+
+const getInmuebles = async (req, res) => {
+  try {
+    const inmuebles = await InmuebleModel.find();
+    res.json(inmuebles);
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
 };
 
-const createInmueble = (req, res) => {
-  res.json("POST");
+const createInmueble = async (req, res) => {
+  try {
+    const result = await InmuebleModel.create(req.body);
+    res.json(result);
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
 };
 
 const updateInmueble = (req, res) => {
-  res.json("PUT");
+  try {
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
 };
 
 const deleteInmueble = (req, res) => {
-  res.json("DELETE");
+  try {
+  } catch (error) {
+    res.json({ fatal: error.message });
+  }
 };
 
 module.exports = {
