@@ -13,4 +13,4 @@ server.listen(PORT);
 server.on("listening", () =>
   console.log(`Servidor escuchado en puerto ${PORT}`)
 );
-server.on("error", () => console.log(error));
+server.on("error", (error) => console.log(error));

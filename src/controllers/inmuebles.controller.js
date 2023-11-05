@@ -18,15 +18,22 @@ const createInmueble = async (req, res) => {
   }
 };
 
-const updateInmueble = (req, res) => {
+const updateInmueble = async (req, res) => {
   try {
+    const { inmuebleId } = req.params;
+    const result = await InmuebleModel.findByIdAndUpdate(inmuebleId, req.body, { new: true });
+    res.json(result);
+
   } catch (error) {
     res.json({ fatal: error.message });
   }
 };
 
-const deleteInmueble = (req, res) => {
+const deleteInmueble = async (req, res) => {
   try {
+    const { inmuebleId } = req.params;
+    const result = await InmuebleModel.findByIdAndDelete(inmuebleId);
+    res.json(result);
   } catch (error) {
     res.json({ fatal: error.message });
   }
